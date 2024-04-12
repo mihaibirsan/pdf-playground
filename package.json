@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "canvas": "^2.11.2",
+    "csv-writer": "^1.6.0",
     "pdfjs-dist": "^4.1.392",
     "tesseract.js": "^5.0.5"
   }
