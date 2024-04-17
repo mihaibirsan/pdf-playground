@@ -17,7 +17,7 @@ const dataPattern = /^(.+) (\d+,\d{2}) ?(A|B|C|D)$/;
 const readStream = fs.createReadStream(inputFile);
 const writeStream = csvWriter.createArrayCsvWriter({
     path: outputFile,
-    header: ['Produs', 'Preț']  // replace with your CSV headers
+    header: ['Produs', 'Preț', 'Data', 'Comerciant']
 });
 
 function stringSafeAddition(a, b) {
@@ -34,6 +34,9 @@ const rl = readline.createInterface({
 
 let startPatternMatched = false;
 const records = [];
+
+const comerciant = 'Lidl';
+const date = inputFile.match(/\d{4}\.\d{2}\.\d{2}/)[0].replaceAll('.', '-');
 
 rl.on('line', (line) => {
     if (!startPatternMatched && line.match(startPattern)) {
@@ -65,7 +68,7 @@ rl.on('line', (line) => {
         const data = line.match(dataPattern);
         if (data) {
             const price = data[2].replace(',', '.');
-            records.push([data[1], price]);
+            records.push([data[1], price, date, comerciant]);
         }
         const followOn = line.match(followOnPattern);
         if (followOn) {
