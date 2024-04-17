@@ -1,6 +1,7 @@
 *.pdf
 *.png
 *.txt
+*.csv
 *.traineddata
 
 # Logs
